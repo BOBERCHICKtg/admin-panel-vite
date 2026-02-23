@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
+📋 Содержание
+Описание проекта
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Технологии
 
-Currently, two official plugins are available:
+Установка и запуск
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Структура проекта
 
-## React Compiler
+Код проекта
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+API Документация
 
-## Expanding the ESLint configuration
+Функционал
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Решение проблем
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Описание проекта
+Административная панель на React с авторизацией и управлением постами. Взаимодействует с REST API через прокси-сервер для обхода CORS.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Данные для входа:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Email: test@test.ru
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Пароль: khro2ij3n2730
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Технологии
+React 18 - библиотека для пользовательских интерфейсов
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+TypeScript - типизация JavaScript
+
+Redux - управление состоянием
+
+Redux-Saga - побочные эффекты и асинхронные действия
+
+React Router v6 - маршрутизация
+
+Axios - HTTP клиент
+
+js-cookie - работа с куками
+
+Express - прокси-сервер
+
+Установка и запуск
+Пошаговая инструкция
+bash
+
+# 1. Создание проекта с Vite
+
+npm create vite@latest admin-panel -- --template react-ts
+cd admin-panel
+
+# 2. Установка зависимостей для React
+
+npm install redux react-redux redux-saga react-router-dom axios js-cookie
+npm install --save-dev @types/react-redux @types/react-router-dom @types/js-cookie
+
+# 3. Установка зависимостей для прокси-сервера
+
+npm install express cors axios form-data
+npm install -D nodemon
+
+# 4. Запуск прокси-сервера (в первом терминале)
+
+node simple-proxy.mjs
+
+# 5. Запуск React приложения (во втором терминале)
+
+npm run dev
+После запуска:
+
+React приложение: http://localhost:5173
+
+Прокси-сервер: http://localhost:3001
+
+Структура проекта
+text
+admin-panel/
+├── src/
+│ ├── api/
+│ │ ├── axios-instance.ts
+│ │ └── endpoints.ts
+│ ├── store/
+│ │ ├── index.ts
+│ │ ├── root-reducer.ts
+│ │ ├── root-saga.ts
+│ │ ├── auth/
+│ │ │ ├── auth-actions.ts
+│ │ │ ├── auth-reducer.ts
+│ │ │ └── auth-saga.ts
+│ │ └── posts/
+│ │ ├── posts-actions.ts
+│ │ ├── posts-reducer.ts
+│ │ └── posts-saga.ts
+│ ├── components/
+│ │ ├── Login.tsx
+│ │ ├── PostsList.tsx
+│ │ └── PrivateRoute.tsx
+│ ├── App.tsx
+│ ├── main.tsx
+│ └── vite-env.d.ts
+├── simple-proxy.mjs
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
